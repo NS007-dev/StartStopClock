@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="index.css" ; />
+    <link rel="icon" href="https://pngimg.com/uploads/stopwatch/stopwatch_PNG138.png" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Stop Clock</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <h1>Start, Stop Clock!</h1>
+        <p>
+            <span id="seconds">00</span>:<span id="tens">00</span>
+        </p>
+        <ul id="laps"></ul>
+        <button id="button-start">Start 💨</button>
+        <button id="button-lap">Lap 🏃🏽‍♀️</button>
+        <button id="button-stop">Stop 🛑</button>
+        <button id="button-reset">Reset ♾</button>
+    </div>
+
+    <script>
+        window.onload = function () {
+            var seconds = 00;
+            var tens = 00;
+            var appendTens = document.getElementById("tens")
+            var appendSeconds = document.getElementById("seconds");
+            var buttonStart = document.getElementById('button-start');
+            var buttonLap = document.getElementById('button-lap');
+            var buttonStop = document.getElementById('button-stop');
+            var buttonReset = document.getElementById('button-reset');
+            var lapList = document.getElementById('laps');
+            var lapCounter = 1;
+            var Interval;
+
+            buttonStart.onclick = function () {
+                clearInterval(Interval);
+                Interval = setInterval(startTimer, 10);
+            }
+
+            buttonLap.onclick = function () {
+                lapList.innerHTML += '<li> <span class="lap-seconds">' + appendSeconds.innerHTML + '</span>:<span class="lap-tens">' + appendTens.innerHTML + '</span> -- Lap ' + lapCounter + '</li>';
+                lapCounter++;
+                storeLaps();
+            }
+
+            buttonStop.onclick = function () {
+                clearInterval(Interval);
+            }
+
+            buttonReset.onclick = function () {
+                clearInterval(Interval);
+                tens = "00";
+                seconds = "00";
+                appendTens.innerHTML = tens;
+                appendSeconds.innerHTML = seconds;
+                lapList.innerHTML = "";
+                lapCounter = 1;
+                storeLaps();
+            }
+
+            function startTimer() {
+                tens++;
+
+                if (tens < 9) {
+                    appendTens.innerHTML = "0" + tens;
+                }
+
+                if (tens > 9) {
+                    appendTens.innerHTML = tens;
+                }
+
+                if (tens > 99) {
+                    console.log("seconds");
+                    seconds++;
+                    appendSeconds.innerHTML = "0" + seconds;
+                    tens = 0;
+                    appendTens.innerHTML = "0" + 0;
+                }
+
+                if (seconds > 9) {
+                    appendSeconds.innerHTML = seconds;
+                }
+            }
+
+            function storeLaps() {
+                window.localStorage.myLaps = lapList.innerHTML;
+            }
+
+            function getLaps() {
+                lapList.innerHTML = window.localStorage.myLaps;
+            }
+            getLaps();
+        }
+    </script>
+</body>
+
+</html>
