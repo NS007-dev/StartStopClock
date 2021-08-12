@@ -8,7 +8,5 @@
 - Stop the time.
 - Start time.
 - Reset the clock.
-
-![Metrics](https://metrics.lecoq.io/CodingSpecies?template=classic&base.header=0&base.activity=0&base.community=0&base.repositories=0&base.metadata=0&pagespeed=1&pagespeed.url=https%3A%2F%2Fcodingspecies.github.io%2FStartStopClock%2F&pagespeed.detailed=true&pagespeed.screenshot=true&config.timezone=Europe%2FLondon)
-
+- 
 ## **Find it here: [Start Stop Clock](https://noorinsakhi.github.io/SpeedStopStart/)**
