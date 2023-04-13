@@ -26,12 +26,7 @@ h1, h2, h3 {
 
 #seconds, #tens {
     font-size: 4.5em;
-    background-image: radial-gradient(rgb(47, 157, 190), black);
     border-radius: 20px;
-}
-
-#seconds, #tens:hover{
-    background-image: linear-gradient(black, rgb(47, 157, 190));
 }
 
 #laps{
